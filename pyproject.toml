@@ -26,6 +26,22 @@ pytest = [
     {version = ">=8.0.0", python = ">=3.8, <3.14"},
 ]
 
+[tool.poetry.group.changelog.dependencies]
+commitizen = { version = "^4.1.0", python = "^3.11" }
+
+[tool.commitizen]
+name = "cz_conventional_commits"
+major_version_zero = true
+version_scheme = "semver2"
+version_provider = "poetry"
+update_changelog_on_bump = true
+bump_message = "update version $current_version → $new_version [skip-ci]"
+version_files = [
+    "testGithubActions/__init__.py",
+    "pyproject.toml:version"
+]
+template = "changelog.md.j2"
+
 
 [build-system]
 requires = ["poetry-core"]
