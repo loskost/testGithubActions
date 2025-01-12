@@ -14,6 +14,13 @@ pandas = [
 ]
 
 [tool.poetry.group.dev.dependencies]
+python = ">=3.11, <3.14"
+pre-commit = { version = "^4.0.1", python = "^3.11" }
+
+[tool.poetry.group.lint.dependencies]
+ruff = { version = "^0.9.1", python = "^3.11" }
+
+[tool.poetry.group.tests.dependencies]
 pytest = [
     {version = "<8.0.0", python = "~3.7"},
     {version = ">=8.0.0", python = ">=3.8, <3.14"},
@@ -23,3 +30,21 @@ pytest = [
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+line-length = 120
+indent-width = 4
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "N", "PD", "SIM", "NPY", "TD", "PTH", "TCH", "UP", "T", "ERA", "PGH", "PL", "R", "TRY", "PERF", "RUF", "C90", "S"]
+ignore = ["PD901", "PLR0913", "TRY003", "S101", "RUF012", "N999"]
+fixable = ["ALL"]
+unfixable = []
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+docstring-code-format = true
